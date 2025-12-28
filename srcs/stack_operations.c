@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   stack_operations.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eturini <eturini@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 22:21:37 by eturini           #+#    #+#             */
-/*   Updated: 2025/12/17 23:04:08 by eturini          ###   ########.fr       */
+/*   Updated: 2025/12/26 23:50:13 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../includes/push_swap.h"
 
 int	setup_a_stack(t_stack *a_stack)
 {

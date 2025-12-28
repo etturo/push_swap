@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eturini <eturini@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 21:45:23 by eturini           #+#    #+#             */
-/*   Updated: 2025/12/17 23:06:53 by eturini          ###   ########.fr       */
+/*   Updated: 2025/12/27 00:09:31 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../includes/push_swap.h"
 
 void	push_swap(void)
 {

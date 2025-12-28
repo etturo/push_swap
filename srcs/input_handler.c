@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   input_handler.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eturini <eturini@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 22:35:56 by eturini           #+#    #+#             */
-/*   Updated: 2025/12/17 22:57:07 by eturini          ###   ########.fr       */
+/*   Updated: 2025/12/26 23:50:13 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../includes/push_swap.h"
 
 int	check_input_validity(char *arguments)
 {

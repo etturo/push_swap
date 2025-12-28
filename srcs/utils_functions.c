@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   utils_functions.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eturini <eturini@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 22:23:28 by eturini           #+#    #+#             */
-/*   Updated: 2025/12/17 23:01:50 by eturini          ###   ########.fr       */
+/*   Updated: 2025/12/26 23:50:13 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../includes/push_swap.h"
 
 char	*ft_strjoin(char *s1, char *s2)
 {
