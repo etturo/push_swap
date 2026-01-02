@@ -6,7 +6,7 @@
 /*   By: eturini <eturini@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 22:23:28 by eturini           #+#    #+#             */
-/*   Updated: 2025/12/26 23:50:13 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/02 17:08:09 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,30 @@ size_t	ft_strlen(const char *s)
 	while (s[i])
 		i++;
 	return (i);
+}
+
+int	ft_atoi(const char *s)
+{
+	int			sign;
+	int			i;
+	long int	number;
+
+	sign = 1;
+	i = 0;
+	number = 0;
+	while ((s[i] >= 9 && s[i] <= 13) || s[i] == 32)
+		i++;
+	if (s[i] == '-')
+	{
+		sign = -1;
+		i++;
+	}
+	else if (s[i] == '+')
+		i++;
+	while (s[i] >= '0' && s[i] <= '9')
+	{
+		number = number * 10 + (s[i] - '0');
+		i++;
+	}
+	return ((int)(number * sign));
 }
