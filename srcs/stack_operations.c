@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_operations.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eturini <eturini@student.42firenze.it>     +#+  +:+       +#+        */
+/*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 22:21:37 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/02 17:13:07 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/07 19:34:20 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,13 @@ int setup_b(t_stack *b_stack)
 	return (TRUE);
 }
 
-void	swap_a(t_stack a_stack)
+void	swap_a(t_stack *a_stack)
 {
-	(void)a_stack;
+	t_stack	*tmp;
+
+	if (!a_stack)
+		return (NULL);
+	while (a_stack)
+		a_stack = a_stack->next;
+	tmp 
 }

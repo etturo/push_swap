@@ -6,16 +6,12 @@
 /*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 22:19:07 by eturini           #+#    #+#             */
-/*   Updated: 2025/12/17 23:01:17 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/07 19:30:11 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 10000
-# endif
 
 # include <stdio.h>
 # include <unistd.h>
@@ -35,12 +31,11 @@ typedef struct	s_stack
 void	push_swap(void);
 
 /* file handler functions, and input validation */
-size_t	read_from_input(char **buffer);
-int		check_input_validity(char *arguments);
+int		check_input_validity(int argc, char **argv, int **arguments);
 
 /* stack operations on the stacks */
 void	swap_a(t_stack a_stack);
-int		setup_a_stack(t_stack *a_stack);
+int		setup_a_stack(t_stack *a_stack, int *arguments);
 int		setup_b_stack(t_stack *b_stack);
 
 /* utils functions */
