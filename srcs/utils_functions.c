@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_functions.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eturini <eturini@student.42firenze.it>     +#+  +:+       +#+        */
+/*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 22:23:28 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/02 17:08:09 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/12 17:59:21 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,3 +76,5 @@ int	ft_atoi(const char *s)
 	}
 	return ((int)(number * sign));
 }
+
+

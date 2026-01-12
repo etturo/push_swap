@@ -6,7 +6,7 @@
 /*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 22:21:37 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/07 19:34:20 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/12 15:33:56 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,5 @@ int setup_b(t_stack *b_stack)
 
 void	swap_a(t_stack *a_stack)
 {
-	t_stack	*tmp;
-
-	if (!a_stack)
-		return (NULL);
-	while (a_stack)
-		a_stack = a_stack->next;
-	tmp 
+	(void)a_stack;
 }

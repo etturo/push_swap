@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eturini <eturini@student.42firenze.it>     +#+  +:+       +#+        */
+/*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 21:45:23 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/02 17:11:56 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/12 17:58:41 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ int main(int argc, char **argv)
 
 	if (check_input_validity(argc, argv, &arguments) == FALSE)
 		return (put_error());
+	for(int i = 0; arguments[i]; i++)
+		printf("%d ", arguments[i]);
+	printf("\n");
 	// setup_a(a_stack, arguments);
 	// setup_b(b_stack);
 	// push_swap();

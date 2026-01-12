@@ -6,7 +6,7 @@
 /*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 22:19:07 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/07 19:30:11 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/12 18:02:13 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,20 @@ void	push_swap(void);
 
 /* file handler functions, and input validation */
 int		check_input_validity(int argc, char **argv, int **arguments);
+int		count_arguments(char **argv);
+int		fill_the_arguments(char **argv, int **arguments);
 
 /* stack operations on the stacks */
-void	swap_a(t_stack a_stack);
+void	swap_a(t_stack *a_stack);
 int		setup_a_stack(t_stack *a_stack, int *arguments);
 int		setup_b_stack(t_stack *b_stack);
 
 /* utils functions */
 char	*ft_strjoin(char *s1, char *s2);
 size_t	ft_strlen(const char *s);
+int		ft_atoi(const char *s);
+
+/* error handling functions */
+int		put_error(void);
 
 #endif
