@@ -6,7 +6,7 @@
 /*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 22:23:28 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/12 17:59:21 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/13 16:55:53 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,11 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-int	ft_atoi(const char *s)
+long long	ft_atoi(const char *s)
 {
 	int			sign;
 	int			i;
-	long int	number;
+	long long	number;
 
 	sign = 1;
 	i = 0;
@@ -74,7 +74,7 @@ int	ft_atoi(const char *s)
 		number = number * 10 + (s[i] - '0');
 		i++;
 	}
-	return ((int)(number * sign));
+	return ((long long)(number * sign));
 }
 
 
