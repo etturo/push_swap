@@ -6,7 +6,7 @@
 /*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 22:21:37 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/13 18:36:04 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/13 18:52:54 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	setup_a(t_stack **a_stack, long long *arguments)
 	current->value = (int)*arguments;
 	current->prev = NULL;
 	current->next = NULL;
+	*a_stack = current;
 	arguments++;
 	while ((*arguments) != END_VALUE)
 	{
@@ -30,13 +31,12 @@ int	setup_a(t_stack **a_stack, long long *arguments)
 		if (!temp)
 			return FALSE;
 		temp->prev = current;
-		current->next = temp;
+		current->prev = temp;
 		current = temp;
 		current->value = (int)*arguments;
-		current->next = NULL;
+		current->prev = NULL;
 		arguments++;
 	}
-	*a_stack = current;
 	return (TRUE);
 }
 
