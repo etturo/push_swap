@@ -6,17 +6,17 @@
 /*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 22:23:28 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/13 19:05:11 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/13 21:53:05 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-long long	ft_atoi(const char *s)
+long	ft_atoi(const char *s)
 {
 	int			sign;
 	int			i;
-	long long	number;
+	long	number;
 
 	sign = 1;
 	i = 0;
@@ -35,7 +35,20 @@ long long	ft_atoi(const char *s)
 		number = number * 10 + (s[i] - '0');
 		i++;
 	}
-	return ((long long)(number * sign));
+	return ((long)(number * sign));
 }
 
+void free_stack(t_stack *stack)
+{
+	t_stack	*tmp;
 
+	tmp = stack;
+	while (stack)
+	{
+		stack = stack->prev;
+		if (tmp)
+			free(tmp);
+	}
+	if (stack)
+		free(stack);
+}

@@ -6,13 +6,13 @@
 /*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 22:21:37 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/13 18:52:54 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/13 22:04:44 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	setup_a(t_stack **a_stack, long long *arguments)
+int	setup_a(t_stack **a_stack, long *arguments)
 {
 	t_stack	*current;
 	t_stack *temp;
@@ -40,18 +40,9 @@ int	setup_a(t_stack **a_stack, long long *arguments)
 	return (TRUE);
 }
 
-int setup_b(t_stack **b_stack)
-{
-	*b_stack = (t_stack *)malloc(sizeof(t_stack));
-	if (!b_stack)
-		return (FALSE);
-	(*b_stack)->value = 0;
-	(*b_stack)->next = NULL;
-	(*b_stack)->prev = NULL;
-	return (TRUE);
-}
-
 void	swap_a(t_stack *a_stack)
 {
-	(void)a_stack;
+	if (!a_stack || !a_stack->prev)
+		return ;
+	
 }

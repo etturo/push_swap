@@ -6,22 +6,22 @@
 /*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 22:35:56 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/13 17:39:43 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/13 22:05:12 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	check_input_validity(int argc, char **argv, long long **arguments)
+int	check_input_validity(int argc, char **argv, long **arguments)
 {
 	int	count_arg;
 
-	if (argc <= 1 || !*arguments)
+	if (argc <= 1)
 		return FALSE;
 	if (check_arg(argv) == FALSE)
 		return FALSE;
 	count_arg = count_arguments(argv);
-	*arguments = (long long *)malloc((sizeof(long long) * count_arg) + 1);
+	*arguments = (long *)malloc((sizeof(long) * (count_arg + 1)));
 	if (!*arguments)
 		return FALSE;
 	if (fill_the_arguments(argv, arguments) == FALSE)
@@ -30,6 +30,8 @@ int	check_input_validity(int argc, char **argv, long long **arguments)
 	while (--count_arg >= 0)
 		if ((*arguments)[count_arg] > INT_MAX || (*arguments)[count_arg] < INT_MIN)
 			return (FALSE);
+	if (check_dup(*arguments) == FALSE)
+		return FALSE;
 	return TRUE;
 }
 
@@ -61,7 +63,7 @@ int	count_arguments(char **argv)
 	return count;
 }
 
-int	fill_the_arguments(char **argv, long long **arguments)
+int	fill_the_arguments(char **argv, long **arguments)
 {
 	int	i;
 	int	j;
@@ -113,6 +115,26 @@ int	check_arg(char **argv)
 			if (argv[i][j] != '\0' && argv[i][j] != ' ')
 				return FALSE;
 		}
+	}
+	return TRUE;
+}
+
+int	check_dup(long *arguments)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (arguments[i] != END_VALUE)
+	{
+		j = i + 1;
+		while (arguments[j] != END_VALUE)
+		{
+			if (arguments[i] == arguments[j])
+				return FALSE;
+			j++;
+		}
+		i++;
 	}
 	return TRUE;
 }
