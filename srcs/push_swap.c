@@ -6,7 +6,7 @@
 /*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 21:45:23 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/13 18:52:17 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/13 18:54:53 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,8 @@ int main(int argc, char **argv)
 	b_stack = NULL;
 	if (check_input_validity(argc, argv, &arguments) == FALSE)
 		return (put_error());
-	printf("ARGUMENTS IN ARRAY\n");
-	for(int i = 0; arguments[i] != END_VALUE; i++)
-		printf("%lld ", arguments[i]);
 	printf("\n");
 	if (!setup_a(&a_stack, arguments) || !setup_b(&b_stack))
 		return(put_error());
-	printf("ARGUMENTS IN STACK\n");
-	t_stack *current = a_stack;
-	while (current != NULL)
-	{
-		printf("%d ", current->value);
-		current = current->prev;
-	}
-	printf("\n");
 	return 0;
 }

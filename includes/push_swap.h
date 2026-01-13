@@ -6,7 +6,7 @@
 /*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 22:19:07 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/13 18:23:32 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/13 19:05:19 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,7 @@ int			setup_b(t_stack **b_stack);
 int			setup_a(t_stack **a_stack, long long *arguments);
 void		swap_a(t_stack *a_stack);
 
-/* utils functions */
-char		*ft_strjoin(char *s1, char *s2);
-size_t		ft_strlen(const char *s);
+/* utils functions */;
 long long	ft_atoi(const char *s);
 
 /* error handling functions */
