@@ -6,7 +6,7 @@
 /*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 22:23:28 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/13 21:53:05 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/14 17:01:34 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,14 @@ long	ft_atoi(const char *s)
 
 void free_stack(t_stack *stack)
 {
-	t_stack	*tmp;
+	t_stack	*current;
+	t_stack	*prev;
 
-	tmp = stack;
-	while (stack)
+	current = stack;
+	while (current)
 	{
-		stack = stack->prev;
-		if (tmp)
-			free(tmp);
+		prev = current->prev;
+		free(current);
+		current = prev;
 	}
-	if (stack)
-		free(stack);
 }

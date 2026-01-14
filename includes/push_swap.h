@@ -6,7 +6,7 @@
 /*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 22:19:07 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/13 21:45:56 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/14 18:34:51 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,16 @@
 # include <stdlib.h>
 # include <limits.h>
 
+# include "../ft_printf/ft_printf.h"
+
 # define TRUE 1
 # define FALSE 0
 
 # define END_VALUE 4242424242
+# define NULL_FLAG 0
+# define A_FLAG 1
+# define B_FLAG 2
+# define BOTH_FLAG 3
 
 typedef struct	s_stack
 {
@@ -31,7 +37,7 @@ typedef struct	s_stack
 }	t_stack;
 
 /* main functions */
-void		push_swap(void);
+void		push_swap(t_stack **a_stack, t_stack **b_stack);
 
 /* file handler functions, and input validation */
 int		check_input_validity(int argc, char **argv, long **arguments);
@@ -43,7 +49,8 @@ int		check_dup(long *arguments);
 /* stack operations on the stacks */
 int		setup_b(t_stack **b_stack);
 int		setup_a(t_stack **a_stack, long *arguments);
-void	swap_a(t_stack *a_stack);
+int		swap(t_stack **head, int stack_flag);
+int		swap_both(t_stack **a_stack, t_stack **b_stack);
 
 /* utils functions */;
 long	ft_atoi(const char *s);

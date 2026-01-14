@@ -6,7 +6,7 @@
 /*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 22:21:37 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/13 22:04:44 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/14 18:31:56 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	setup_a(t_stack **a_stack, long *arguments)
 		if (!temp)
 			return FALSE;
 		temp->prev = current;
+		temp->next = NULL;
 		current->prev = temp;
 		current = temp;
 		current->value = (int)*arguments;
@@ -40,9 +41,34 @@ int	setup_a(t_stack **a_stack, long *arguments)
 	return (TRUE);
 }
 
-void	swap_a(t_stack *a_stack)
+int	swap(t_stack **head, int stack_flag)
 {
-	if (!a_stack || !a_stack->prev)
-		return ;
-	
+	t_stack	*first;
+	t_stack	*second;
+	t_stack	*third;
+
+	first = *head;
+	if (!first || !first->prev)
+		return 1;
+	second = first->prev;
+	third = second->prev;
+	third->next = first;
+	second->next = NULL;
+	first->next = second;
+	first->prev = third;
+	second->prev = first;
+	if (stack_flag == A_FLAG)
+		ft_printf("sa\n");
+	if (stack_flag == B_FLAG)
+		ft_printf("sb\n");
+	*head = second;
+	return 1;
+}
+
+int	swap_both(t_stack **a_stack, t_stack **b_stack)
+{
+	swap(a_stack, NULL_FLAG);
+	swap(b_stack, NULL_FLAG);
+	ft_printf("ss\n");
+	return 1;
 }
