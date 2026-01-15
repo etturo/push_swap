@@ -6,7 +6,7 @@
 /*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 22:21:37 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/14 18:31:56 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/15 16:11:42 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	setup_a(t_stack **a_stack, long *arguments)
 
 	current = (t_stack *)malloc(sizeof(t_stack));
 	if (!current)
-		return FALSE;
+		return (FALSE);
 	current->value = (int)*arguments;
 	current->prev = NULL;
 	current->next = NULL;
@@ -29,7 +29,7 @@ int	setup_a(t_stack **a_stack, long *arguments)
 	{
 		temp = (t_stack *)malloc(sizeof(t_stack));
 		if (!temp)
-			return FALSE;
+			return (FALSE);
 		temp->prev = current;
 		temp->next = NULL;
 		current->prev = temp;
@@ -67,8 +67,46 @@ int	swap(t_stack **head, int stack_flag)
 
 int	swap_both(t_stack **a_stack, t_stack **b_stack)
 {
-	swap(a_stack, NULL_FLAG);
-	swap(b_stack, NULL_FLAG);
+	list_swap(a_stack, NULL_FLAG);
+	list_swap(b_stack, NULL_FLAG);
 	ft_printf("ss\n");
+	return 1;
+}
+
+int	push_b(t_stack **a_stack, t_stack **b_stack)
+{
+	t_stack *prev_a;
+
+	(void)b_stack;
+	prev_a = (*a_stack)->prev;
+	list_swap(a_stack, &prev_a);
+	ft_printf("pb\n");
+	return 1;
+}
+
+int	push_a(t_stack **a_stack, t_stack **b_stack)
+{
+	t_stack	*a_first;
+	t_stack	*b_first;
+	t_stack	*b_second;
+
+	b_first = *b_stack;
+	b_second = b_first->prev;
+	a_first = *a_stack;
+	if (!a_first)
+	{
+		a_first = b_first;
+		a_first->prev = NULL;
+	}
+	else
+	{
+		b_first->prev = a_first;
+		a_first->next = b_first;
+		a_first = b_first;
+	}
+	b_second->next = NULL;
+	*b_stack = b_second;
+	*a_stack = a_first;
+	ft_printf("pa\n");
 	return 1;
 }

@@ -6,7 +6,7 @@
 /*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 22:19:07 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/14 18:34:51 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/15 16:05:09 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,13 @@ int		setup_b(t_stack **b_stack);
 int		setup_a(t_stack **a_stack, long *arguments);
 int		swap(t_stack **head, int stack_flag);
 int		swap_both(t_stack **a_stack, t_stack **b_stack);
+int		push_a(t_stack **a_stack, t_stack **b_stack);
+int	push_b(t_stack **a_stack, t_stack **b_stack);
 
 /* utils functions */;
 long	ft_atoi(const char *s);
 void	free_stack(t_stack *stack);
+void	list_swap(t_stack **ele1, t_stack **ele2);
 
 /* error handling functions */
 int		put_error(void);

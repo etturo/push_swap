@@ -6,7 +6,7 @@
 /*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 22:23:28 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/14 17:01:34 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/15 16:07:33 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,27 @@ void free_stack(t_stack *stack)
 		free(current);
 		current = prev;
 	}
+}
+
+void	list_swap(t_stack **ele1, t_stack **ele2)
+{
+	t_stack	*prev1;
+	t_stack	*prev2;
+
+	if (!*ele1)
+	{
+		*ele1 = *ele2;
+		*ele2 = NULL;
+	}
+	if (!*ele2)
+	{
+		*ele2 = *ele1;
+		*ele1 = NULL;
+	}
+	prev1 = (*ele1)->prev;
+	prev2 = (*ele2)->prev;
+	prev1->next = *ele1;
+	prev2->next = *ele2;
+	(*ele1)->prev = *ele2;
+	(*ele2)->prev = *ele1;
 }

@@ -29,7 +29,7 @@ fclean: clean
 
 re: fclean all
 
-RANGE ?= -50-50
+RANGE ?= -100-100
 COUNT ?= 10
 RANDOM_NUMS = $$(echo "$(RANGE)" | awk -F'-' '{ \
 	if (NF == 2) { lo=$$1; hi=$$2 } \
