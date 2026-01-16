@@ -6,7 +6,7 @@
 /*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 22:23:28 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/16 11:35:22 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/16 11:48:23 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,5 @@ void free_stack(t_stack *stack)
 		free(current);
 		current = prev;
 	}
-	ciaone
 }
 
