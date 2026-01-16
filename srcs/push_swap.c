@@ -6,7 +6,7 @@
 /*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 21:45:23 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/16 12:47:35 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/16 12:51:51 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,12 @@ void	push_swap(t_stack **a_stack, t_stack **b_stack)
 
 	(void)b_stack;
 	count = 0;
-	// count += rotate(a_stack, A_FLAG);
-	// count += rotate(a_stack, A_FLAG);
-	// count += rotate(a_stack, A_FLAG);
-	// count += reverse_rotate(a_stack, A_FLAG);
-	// count += reverse_rotate(a_stack, A_FLAG);
+	count += rotate(a_stack, A_FLAG);
+	count += rotate(a_stack, A_FLAG);
+	count += rotate(a_stack, A_FLAG);
+	count += reverse_rotate(a_stack, A_FLAG);
+	count += reverse_rotate(a_stack, A_FLAG);
+	count += reverse_rotate(a_stack, A_FLAG);
 	// count += push_b(a_stack, b_stack);
 	// count += push_b(a_stack, b_stack);
 	// count += push_b(a_stack, b_stack);
