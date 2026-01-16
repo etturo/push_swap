@@ -6,7 +6,7 @@
 /*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 22:19:07 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/16 11:15:08 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/16 12:12:27 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,11 @@ int		setup_a(t_stack **a_stack, long *arguments);
 int		swap(t_stack **head, int stack_flag);
 int		swap_both(t_stack **a_stack, t_stack **b_stack);
 int		push_a(t_stack **a_stack, t_stack **b_stack);
-int	push_b(t_stack **a_stack, t_stack **b_stack);
+int		push_b(t_stack **a_stack, t_stack **b_stack);
+int		rotate(t_stack **head, int flag);
+int		rotate_both(t_stack **a_stack, t_stack **b_stack);
+int		reverse_rotate(t_stack **head, int flag);
+int		reverse_rotate_both(t_stack **a_stack, t_stack **b_stack);
 
 /* utils functions */;
 long	ft_atoi(const char *s);
