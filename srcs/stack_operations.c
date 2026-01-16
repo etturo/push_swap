@@ -6,7 +6,7 @@
 /*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 22:21:37 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/15 16:11:42 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/16 11:25:35 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,70 +43,72 @@ int	setup_a(t_stack **a_stack, long *arguments)
 
 int	swap(t_stack **head, int stack_flag)
 {
-	t_stack	*first;
-	t_stack	*second;
-	t_stack	*third;
+	t_stack *temp;
 
-	first = *head;
-	if (!first || !first->prev)
+	if (!*head || !(*head)->prev)
 		return 1;
-	second = first->prev;
-	third = second->prev;
-	third->next = first;
-	second->next = NULL;
-	first->next = second;
-	first->prev = third;
-	second->prev = first;
+	temp = *head;
+	*head = (*head)->prev;
+	temp->next = *head;
+	if ((*head)->prev)
+	{
+		((*head)->prev)->next = temp;
+		temp->prev = (*head)->prev;
+	}
+	else
+		temp->prev = NULL;
+	(*head)->prev = temp;
+	temp->next = *head;
+	(*head)->next = NULL;
 	if (stack_flag == A_FLAG)
 		ft_printf("sa\n");
 	if (stack_flag == B_FLAG)
 		ft_printf("sb\n");
-	*head = second;
 	return 1;
 }
 
 int	swap_both(t_stack **a_stack, t_stack **b_stack)
 {
-	list_swap(a_stack, NULL_FLAG);
-	list_swap(b_stack, NULL_FLAG);
+	swap(a_stack, NULL_FLAG);
+	swap(b_stack, NULL_FLAG);
 	ft_printf("ss\n");
 	return 1;
 }
 
 int	push_b(t_stack **a_stack, t_stack **b_stack)
 {
-	t_stack *prev_a;
+	t_stack	*temp;
 
-	(void)b_stack;
-	prev_a = (*a_stack)->prev;
-	list_swap(a_stack, &prev_a);
+	if (!*a_stack)
+		return (1);
+	temp = *a_stack;
+	*a_stack = (*a_stack)->prev;
+	if (*a_stack)
+		(*a_stack)->next = NULL;
+	temp->prev = *b_stack;
+	temp->next = NULL;
+	if (*b_stack)
+		(*b_stack)->next = temp;
+	*b_stack = temp;
 	ft_printf("pb\n");
-	return 1;
+	return (1);
 }
 
 int	push_a(t_stack **a_stack, t_stack **b_stack)
 {
-	t_stack	*a_first;
-	t_stack	*b_first;
-	t_stack	*b_second;
+	t_stack	*temp;
 
-	b_first = *b_stack;
-	b_second = b_first->prev;
-	a_first = *a_stack;
-	if (!a_first)
-	{
-		a_first = b_first;
-		a_first->prev = NULL;
-	}
-	else
-	{
-		b_first->prev = a_first;
-		a_first->next = b_first;
-		a_first = b_first;
-	}
-	b_second->next = NULL;
-	*b_stack = b_second;
-	*a_stack = a_first;
+	if (!*b_stack)
+		return (1);
+	temp = *b_stack;
+	*b_stack = (*b_stack)->prev;
+	if (*b_stack)
+		(*b_stack)->next = NULL;
+	temp->prev = *a_stack;
+	temp->next = NULL;
+	if (*a_stack)
+		(*a_stack)->next = temp;
+	*a_stack = temp;
 	ft_printf("pa\n");
-	return 1;
+	return (1);
 }

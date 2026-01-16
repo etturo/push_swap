@@ -6,7 +6,7 @@
 /*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 21:45:23 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/15 15:59:37 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/16 11:24:00 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,10 @@ void	push_swap(t_stack **a_stack, t_stack **b_stack)
 	(void)b_stack;
 	count = 0;
 	// count += swap_both(a_stack, b_stack);
-	count += push_a(a_stack, b_stack);
+	// count += push_a(a_stack, b_stack);
 	// count += swap_both(a_stack, b_stack);
+	count += push_b(a_stack, b_stack);
+	count += push_b(a_stack, b_stack);
 	// count += push_b(a_stack, b_stack);
 	// count += push_b(a_stack, b_stack);
 	// count += push_b(a_stack, b_stack);
@@ -30,9 +32,12 @@ void	push_swap(t_stack **a_stack, t_stack **b_stack)
 	// count += push_b(a_stack, b_stack);
 	// count += push_b(a_stack, b_stack);
 	// count += push_b(a_stack, b_stack);
-	// count += push_b(a_stack, b_stack);
-	//count += swap_both(a_stack, b_stack);
-	//count += push_a(a_stack, b_stack);
+	count += swap_both(a_stack, b_stack);
+	// count += push_a(a_stack, b_stack);
+	// count += push_a(a_stack, b_stack);
+	// count += push_a(a_stack, b_stack);
+	// count += push_a(a_stack, b_stack);
+	// count += push_a(a_stack, b_stack);
 	ft_printf("number of operation: %d\n", count);
 }
 
