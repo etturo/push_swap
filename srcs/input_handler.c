@@ -6,7 +6,7 @@
 /*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 22:35:56 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/13 22:05:12 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/16 13:56:55 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	check_input_validity(int argc, char **argv, long **arguments)
 {
 	int	count_arg;
+	int	i;
 
 	if (argc <= 1)
 		return FALSE;
@@ -26,11 +27,11 @@ int	check_input_validity(int argc, char **argv, long **arguments)
 		return FALSE;
 	if (fill_the_arguments(argv, arguments) == FALSE)
 		return FALSE;
-	(*arguments)[count_arg] = END_VALUE;
-	while (--count_arg >= 0)
-		if ((*arguments)[count_arg] > INT_MAX || (*arguments)[count_arg] < INT_MIN)
+	i = count_arg;
+	while (--i >= 0)
+		if ((*arguments)[i] > INT_MAX || (*arguments)[i] < INT_MIN)
 			return (FALSE);
-	if (check_dup(*arguments) == FALSE)
+	if (check_dup(*arguments, count_arg) == FALSE)
 		return FALSE;
 	return TRUE;
 }
@@ -119,16 +120,16 @@ int	check_arg(char **argv)
 	return TRUE;
 }
 
-int	check_dup(long *arguments)
+int	check_dup(long *arguments, int size)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (arguments[i] != END_VALUE)
+	while (i < size)
 	{
 		j = i + 1;
-		while (arguments[j] != END_VALUE)
+		while (j < size)
 		{
 			if (arguments[i] == arguments[j])
 				return FALSE;

@@ -4,7 +4,8 @@ CFLAGS = -Wall -Wextra -Werror
 INCLUDES = -I./includes -I./ft_printf
 
 SRCS = srcs/push_swap.c srcs/error_handler.c srcs/input_handler.c \
-       srcs/stack_operations.c srcs/utils_functions.c srcs/stack_operations_2.c
+       srcs/stack_operations.c srcs/utils_functions.c srcs/stack_operations_2.c \
+	   srcs/algorithm.c
 OBJS = $(SRCS:.c=.o)
 PRINTF_LIB = ft_printf/libftprintf.a
 

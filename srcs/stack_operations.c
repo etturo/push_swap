@@ -6,17 +6,20 @@
 /*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 22:21:37 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/16 12:44:05 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/17 16:26:16 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int setup_a(t_stack **a_stack, long *arguments)
+int setup_a(t_stack **a_stack, long *arguments, int size)
 {
 	t_stack *current;
 	t_stack *new_node;
+	t_stack	*head;
+	int		i;
 
+	i = 0;
 	current = *a_stack;
 	current = (t_stack *)malloc(sizeof(t_stack));
 	if (!current)
@@ -24,20 +27,21 @@ int setup_a(t_stack **a_stack, long *arguments)
 	current->value = (int)*arguments;
 	current->prev = NULL;
 	current->next = NULL;
+	head = current;
 	arguments++;
-	while ((*arguments) != END_VALUE)
+	while (++i < size)
 	{
 		new_node = (t_stack *)malloc(sizeof(t_stack));
 		if (!new_node)
 			return (FALSE);
 		new_node->value = (int)*arguments;
-		new_node->next = NULL;
-		new_node->prev = current;
-		current->next = new_node;
+		new_node->prev = NULL;
+		new_node->next = current;
+		current->prev = new_node;
 		current = new_node;
 		arguments++;
 	}
-	*a_stack = current;
+	*a_stack = head;
 	return (TRUE);
 }
 

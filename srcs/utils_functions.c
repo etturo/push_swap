@@ -6,7 +6,7 @@
 /*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 22:23:28 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/16 11:48:23 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/16 13:26:11 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,3 +52,15 @@ void free_stack(t_stack *stack)
 	}
 }
 
+int	stack_size(t_stack *stack)
+{
+	int	count;
+
+	count = 0;
+	while (stack)
+	{
+		count++;
+		stack = stack->prev;
+	}
+	return count;
+}

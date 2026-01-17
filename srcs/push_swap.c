@@ -6,47 +6,25 @@
 /*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 21:45:23 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/16 12:51:51 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/17 18:02:43 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	push_swap(t_stack **a_stack, t_stack **b_stack)
+void	push_swap(t_stack **a_stack, t_stack **b_stack, long *arguments)
 {
 	int	count;
 
 	(void)b_stack;
 	count = 0;
-	count += rotate(a_stack, A_FLAG);
-	count += rotate(a_stack, A_FLAG);
-	count += rotate(a_stack, A_FLAG);
-	count += reverse_rotate(a_stack, A_FLAG);
-	count += reverse_rotate(a_stack, A_FLAG);
-	count += reverse_rotate(a_stack, A_FLAG);
-	// count += push_b(a_stack, b_stack);
-	// count += push_b(a_stack, b_stack);
-	// count += push_b(a_stack, b_stack);
-	// count += rotate(b_stack, B_FLAG);
-	// count += swap_both(a_stack, b_stack);
-	// count += push_a(a_stack, b_stack);
-	// count += swap_both(a_stack, b_stack);
-	// count += push_b(a_stack, b_stack);
-	// count += push_b(a_stack, b_stack);
-	// count += reverse_rotate_both(a_stack, b_stack);
-	// count += reverse_rotate_both(a_stack, b_stack);
-	// count += push_b(a_stack, b_stack);
-	// count += push_b(a_stack, b_stack);
-	// count += push_b(a_stack, b_stack);
-	// count += push_b(a_stack, b_stack);
-	// count += push_b(a_stack, b_stack);
-	// count += push_b(a_stack, b_stack);
-	// count += swap_both(a_stack, b_stack);
-	// count += push_a(a_stack, b_stack);
-	// count += push_a(a_stack, b_stack);
-	// count += push_a(a_stack, b_stack);
-	// count += push_a(a_stack, b_stack);
-	// count += push_a(a_stack, b_stack);
+	if (is_sorted(*a_stack) == TRUE)
+		return ;
+	/*-----------------------AREA TEST--------------------------------*/
+
+	
+
+	/*----------------------------------------------------------------*/
 	ft_printf("number of operation: %d\n", count);
 }
 
@@ -60,14 +38,20 @@ int main(int argc, char **argv)
 	t_stack	*current;
 
 	ft_printf("\n");
+	ft_printf("------------------------------------------------------\n");
+	ft_printf("ARGUMENTS: ");
+	for (int i = 1; i < argc; i++)
+		ft_printf("%s ", argv[i]);
+	ft_printf("\n");
+
 	a_stack = NULL;
 	b_stack = NULL;
 	(void)b_stack;
 	if (check_input_validity(argc, argv, &arguments) == FALSE)
 		return (put_error());
-	if (!setup_a(&a_stack, arguments))
+	if (!setup_a(&a_stack, arguments, count_arguments(argv)))
 		return(put_error());
-	ft_printf("------------------------------------------\n");
+	ft_printf("------------------------------------------------------\n");
 	ft_printf("BEFORE PUSH_SWAP\nSTACK A: ");
 	current = a_stack;
 	while (current)
@@ -83,9 +67,9 @@ int main(int argc, char **argv)
 		current = current->prev;
 	}
 	ft_printf("\n");
-	ft_printf("------------------------------------------\n");
-	push_swap(&a_stack, &b_stack);
-	ft_printf("------------------------------------------\n");
+	ft_printf("------------------------------------------------------\n");
+	push_swap(&a_stack, &b_stack, arguments);
+	ft_printf("------------------------------------------------------\n");
 	ft_printf("AFTER PUSH_SWAP\nSTACK A: ");
 	current = a_stack;
 	while (current)
@@ -104,6 +88,6 @@ int main(int argc, char **argv)
 	free_stack(a_stack);
 	free_stack(b_stack);
 	ft_printf("\n");
-	ft_printf("------------------------------------------\n");
+	ft_printf("------------------------------------------------------\n");
 	return 0;
 }
