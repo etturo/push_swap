@@ -6,7 +6,7 @@
 /*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 22:19:07 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/17 17:40:07 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/19 18:33:31 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # define TRUE 1
 # define FALSE 0
 
+# define ERROR_FLAG 4242424242
 # define NULL_FLAG 0
 # define A_FLAG 1
 # define B_FLAG 2
@@ -62,12 +63,15 @@ int		reverse_rotate_both(t_stack **a_stack, t_stack **b_stack);
 void	index_sorting(t_stack **stack, long *arguments);
 long	*bubble_sort(long *num, int size);
 int		is_sorted(t_stack *stack);
+t_stack	**find_cheaper(t_stack	**a_stack);
 
 /* utils functions */;
 long	ft_atoi(const char *s);
 void	free_stack(t_stack *stack);
 int		is_sorted(t_stack *stack);
 int		stack_size(t_stack *stack);
+int		ft_max(int a, int b);
+int		ft_abs(int a);
 
 /* error handling functions */
 int		put_error(void);

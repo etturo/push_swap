@@ -6,7 +6,7 @@
 /*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 21:45:23 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/17 18:02:43 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/19 18:19:22 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,12 @@ void	push_swap(t_stack **a_stack, t_stack **b_stack, long *arguments)
 	int	count;
 
 	(void)b_stack;
+	(void)arguments;
 	count = 0;
 	if (is_sorted(*a_stack) == TRUE)
 		return ;
+	count += push_b(a_stack, b_stack);
+	count += push_b(a_stack, b_stack);
 	/*-----------------------AREA TEST--------------------------------*/
 
 	
@@ -51,6 +54,18 @@ int main(int argc, char **argv)
 		return (put_error());
 	if (!setup_a(&a_stack, arguments, count_arguments(argv)))
 		return(put_error());
+
+	index_sorting(&a_stack, arguments);
+	current = a_stack;
+	ft_printf("------------------------------------------------------\n");
+	ft_printf("INDEXED: ");
+	while (current)
+	{
+		ft_printf("%d ", current->index);
+		current = current->prev;
+	}
+	ft_printf("\n");
+
 	ft_printf("------------------------------------------------------\n");
 	ft_printf("BEFORE PUSH_SWAP\nSTACK A: ");
 	current = a_stack;

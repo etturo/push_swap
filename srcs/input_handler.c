@@ -6,7 +6,7 @@
 /*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 22:35:56 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/16 13:56:55 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/19 15:26:02 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,9 @@ int	fill_the_arguments(char **argv, long **arguments)
 				j++;
 			if ((argv[i][j] >= '0' && argv[i][j] <= '9') || argv[i][j] == '+' || argv[i][j] == '-')
 			{
-				(*arguments)[ar_index++] = ft_atoi(&(argv[i][j]));
+				(*arguments)[ar_index] = ft_atoi(&(argv[i][j]));
+				if ((*arguments)[ar_index++] == ERROR_FLAG)
+					return FALSE;
 				while ((argv[i][j] >= '0' && argv[i][j] <= '9') || argv[i][j] == '+' || argv[i][j] == '-')
 					j++;
 			}
