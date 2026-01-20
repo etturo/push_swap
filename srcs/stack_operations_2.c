@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_operations_2.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eturini <eturini@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 11:49:52 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/16 12:46:46 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/20 21:45:06 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ int	rotate(t_stack **head, int flag)
 
 int	rotate_both(t_stack **a_stack, t_stack **b_stack)
 {
-	rotate(a_stack, A_FLAG);
-	rotate(b_stack, B_FLAG);
+	rotate(a_stack, NULL_FLAG);
+	rotate(b_stack, NULL_FLAG);
 	ft_printf("rr\n");
 	return 1;
 }

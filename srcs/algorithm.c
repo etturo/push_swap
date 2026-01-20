@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algorithm.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eturini <eturini@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 13:02:51 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/20 18:27:12 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/20 21:43:17 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,14 @@
 int	is_sorted(t_stack *stack)
 {
 	t_stack	*current;
-	int		prev;
 
+	if (!stack || !stack->prev)
+		return TRUE;
 	current = stack;
-	prev = current->value;
 	while (current->prev)
 	{
-		if (prev > current->value)
+		if (current->index > current->prev->index)
 			return FALSE;
-		prev = current->value;
 		current = current->prev;
 	}
 	return TRUE;
@@ -140,6 +139,7 @@ int	find_cheaper(t_stack *a_stack, t_stack *b_stack, t_moves *moves)
 	int		cheap_pos;
 
 	current = a_stack;
+	cheap_pos = 0;
 	position = 0;
 	cheap_cost = 1000000;
 	while (current)
@@ -223,6 +223,8 @@ int	find_min(t_stack *head)
 {
 	int	min;
 
+	if (!head)
+		return 0;
 	min = head->index;
 	while (head)
 	{
@@ -237,6 +239,8 @@ int	find_max(t_stack *head)
 {
 	int	max;
 
+	if (!head)
+		return 0;
 	max = head->index;
 	while (head)
 	{
@@ -277,6 +281,8 @@ int	find_target(t_stack *a_stack, t_stack *b_stack, int a_pos)
 
 	while (a_pos-- > 0)
 		a_stack = a_stack->prev;
+	if (!b_stack)
+		return 0;
 	if (a_stack->index < find_min(b_stack))
 		return find_max_pos(b_stack);
 	target = -1;
@@ -330,7 +336,7 @@ int	find_n_rotation(t_stack *a_stack, int value)
 	while (current->prev)
 	{
 		prev = current->prev;
-		if (value < current->index && value > prev->index)
+		if (value > current->index && value < prev->index)
 			return (n + 1);
 		current = current->prev;
 		n++;

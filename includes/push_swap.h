@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eturini <eturini@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 22:19:07 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/20 18:03:13 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/20 21:14:19 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ typedef struct	s_move
 }	t_moves;
 
 /* main functions */
-void	push_swap(t_stack **a_stack, t_stack **b_stack, long *arguments);
+void	push_swap(t_stack **a_stack, t_stack **b_stack);
 
 /* file handler functions, and input validation */
 int		check_input_validity(int argc, char **argv, long **arguments);

@@ -30,8 +30,8 @@ fclean: clean
 
 re: fclean all
 
-RANGE ?= 0-99
-COUNT ?= 100
+RANGE ?= 0-500
+COUNT ?= 500
 RANDOM_NUMS = $$(echo "$(RANGE)" | awk -F'-' '{ \
 	if (NF == 2) { lo=$$1; hi=$$2 } \
 	else if (NF == 3 && $$1 == "") { lo=-$$2; hi=$$3 } \
@@ -43,6 +43,6 @@ test: $(NAME)
 	@./$(NAME) $(RANDOM_NUMS)
 
 valgrind: $(NAME)
-	@valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) $(RANDOM_NUMS)
+	@valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) $$(echo "$(RANGE)" | awk -F'-' '{if (NF==2) {lo=$$1; hi=$$2} else if (NF==3 && $$1=="") {lo=-$$2; hi=$$3} else if (NF==4 && $$1=="" && $$3=="") {lo=-$$2; hi=-$$4} print lo, hi}' | xargs seq | shuf -n $(COUNT) | tr '\n' ' ')
 
 .PHONY: all clean fclean re valgrind test
