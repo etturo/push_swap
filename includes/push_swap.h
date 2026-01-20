@@ -6,7 +6,7 @@
 /*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 22:19:07 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/19 18:33:31 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/20 18:03:13 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,12 @@ typedef struct	s_stack
 	struct s_stack	*prev;
 }	t_stack;
 
+typedef struct	s_move
+{
+	int	ra;
+	int	rb;
+}	t_moves;
+
 /* main functions */
 void	push_swap(t_stack **a_stack, t_stack **b_stack, long *arguments);
 
@@ -63,7 +69,16 @@ int		reverse_rotate_both(t_stack **a_stack, t_stack **b_stack);
 void	index_sorting(t_stack **stack, long *arguments);
 long	*bubble_sort(long *num, int size);
 int		is_sorted(t_stack *stack);
-t_stack	**find_cheaper(t_stack	**a_stack);
+int		find_cheaper(t_stack *a_stack, t_stack *b_stack, t_moves *moves);
+int		find_target(t_stack *a_stack, t_stack *b_stack, int a_pos);
+int		execute_move(t_stack **a_stack, t_stack **b_stack);
+int		calculate_moves(t_stack *a_stack, t_stack *b_stack, int a_pos, t_moves *move);
+int		find_min_moves(int *move, int *comb, t_moves *moves);
+void	set_moves(int *move, t_moves *moves, int i);
+int		sort_three(t_stack **a_stack);
+int		sort_back(t_stack **a_stack, t_stack **b_stack);
+int		find_max(t_stack *head);
+int		find_min_pos(t_stack *stack);
 
 /* utils functions */;
 long	ft_atoi(const char *s);

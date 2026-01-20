@@ -1,6 +1,6 @@
 NAME = push_swap.out
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 INCLUDES = -I./includes -I./ft_printf
 
 SRCS = srcs/push_swap.c srcs/error_handler.c srcs/input_handler.c \
@@ -30,8 +30,8 @@ fclean: clean
 
 re: fclean all
 
-RANGE ?= -100-100
-COUNT ?= 10
+RANGE ?= 0-99
+COUNT ?= 100
 RANDOM_NUMS = $$(echo "$(RANGE)" | awk -F'-' '{ \
 	if (NF == 2) { lo=$$1; hi=$$2 } \
 	else if (NF == 3 && $$1 == "") { lo=-$$2; hi=$$3 } \

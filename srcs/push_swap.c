@@ -6,7 +6,7 @@
 /*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 21:45:23 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/19 18:19:22 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/20 18:29:26 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,23 @@ void	push_swap(t_stack **a_stack, t_stack **b_stack, long *arguments)
 	(void)b_stack;
 	(void)arguments;
 	count = 0;
+	if (stack_size(*a_stack) == 3)
+		sort_three(a_stack);
 	if (is_sorted(*a_stack) == TRUE)
 		return ;
 	count += push_b(a_stack, b_stack);
 	count += push_b(a_stack, b_stack);
 	/*-----------------------AREA TEST--------------------------------*/
 
+	while (stack_size(*a_stack) > 3)
+		count += execute_move(a_stack, b_stack);
+	count += sort_three(a_stack);
+	while (stack_size(*b_stack) != 0)
+		count += sort_back(a_stack, b_stack);
 	
 
 	/*----------------------------------------------------------------*/
-	ft_printf("number of operation: %d\n", count);
+	printf("number of operation: %d\n", count);
 }
 
 int main(int argc, char **argv)

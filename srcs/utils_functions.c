@@ -6,7 +6,7 @@
 /*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 22:23:28 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/19 18:33:13 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/20 14:30:21 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,11 @@ int ft_abs(int a)
 	if (a < 0)
 		return -a;
 	return a;
+}
+
+int	ft_min(int a, int b)
+{
+	if (a < b)
+		return a;
+	return b;
 }
