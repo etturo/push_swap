@@ -6,7 +6,7 @@
 /*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 22:35:56 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/21 18:10:57 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/21 18:20:26 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,8 +104,6 @@ int	check_arg(char **argv)
 	while (argv[++i])
 	{
 		j = 0;
-		if (argv[i][0] == '\0')
-			return (FALSE);
 		while (argv[i][j])
 		{
 			while (argv[i][j] == ' ')
