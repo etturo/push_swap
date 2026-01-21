@@ -6,20 +6,17 @@
 /*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 22:21:37 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/17 16:26:16 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/21 12:23:21 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int setup_a(t_stack **a_stack, long *arguments, int size)
+int	setup_a(t_stack **a_stack, long *arguments, int size)
 {
-	t_stack *current;
-	t_stack *new_node;
+	t_stack	*current;
 	t_stack	*head;
-	int		i;
 
-	i = 0;
 	current = *a_stack;
 	current = (t_stack *)malloc(sizeof(t_stack));
 	if (!current)
@@ -29,6 +26,19 @@ int setup_a(t_stack **a_stack, long *arguments, int size)
 	current->next = NULL;
 	head = current;
 	arguments++;
+	*a_stack = current;
+	if (fill_a_stack(a_stack, arguments, size) == FALSE)
+		return (FALSE);
+	*a_stack = head;
+	return (TRUE);
+}
+
+int	fill_a_stack(t_stack **current, long *arguments, int size)
+{
+	t_stack	*new_node;
+	int		i;
+
+	i = 0;
 	while (++i < size)
 	{
 		new_node = (t_stack *)malloc(sizeof(t_stack));
@@ -36,21 +46,20 @@ int setup_a(t_stack **a_stack, long *arguments, int size)
 			return (FALSE);
 		new_node->value = (int)*arguments;
 		new_node->prev = NULL;
-		new_node->next = current;
-		current->prev = new_node;
-		current = new_node;
+		new_node->next = *current;
+		(*current)->prev = new_node;
+		(*current) = new_node;
 		arguments++;
 	}
-	*a_stack = head;
 	return (TRUE);
 }
 
 int	swap(t_stack **head, int stack_flag)
 {
-	t_stack *temp;
+	t_stack	*temp;
 
 	if (!*head || !(*head)->prev)
-		return 1;
+		return (1);
 	temp = *head;
 	*head = (*head)->prev;
 	temp->next = *head;
@@ -68,7 +77,7 @@ int	swap(t_stack **head, int stack_flag)
 		ft_printf("sa\n");
 	if (stack_flag == B_FLAG)
 		ft_printf("sb\n");
-	return 1;
+	return (1);
 }
 
 int	swap_both(t_stack **a_stack, t_stack **b_stack)
@@ -76,7 +85,7 @@ int	swap_both(t_stack **a_stack, t_stack **b_stack)
 	swap(a_stack, NULL_FLAG);
 	swap(b_stack, NULL_FLAG);
 	ft_printf("ss\n");
-	return 1;
+	return (1);
 }
 
 int	push_b(t_stack **a_stack, t_stack **b_stack)

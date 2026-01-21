@@ -6,7 +6,7 @@
 /*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 13:02:51 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/21 11:54:01 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/21 12:32:04 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,15 @@ int	is_sorted(t_stack *stack)
 	t_stack	*current;
 
 	if (!stack || !stack->prev)
-		return TRUE;
+		return (TRUE);
 	current = stack;
 	while (current->prev)
 	{
 		if (current->index > current->prev->index)
-			return FALSE;
+			return (FALSE);
 		current = current->prev;
 	}
-	return TRUE;
+	return (TRUE);
 }
 
 long	*bubble_sort(long *num, int size)
@@ -34,7 +34,7 @@ long	*bubble_sort(long *num, int size)
 	long	temp;
 
 	if (size <= 1)
-		return NULL;
+		return (NULL);
 	i = 1;
 	while (i < size)
 	{
@@ -48,7 +48,7 @@ long	*bubble_sort(long *num, int size)
 		else
 			i++;
 	}
-	return num;
+	return (num);
 }
 
 void	index_sorting(t_stack **stack, long *arguments)
@@ -77,69 +77,68 @@ void	index_sorting(t_stack **stack, long *arguments)
 		current = current->prev;
 	}
 }
+
 int	sort_two(t_stack **a_stack)
 {
 	if (stack_size(*a_stack) == 1 || stack_size(*a_stack) == 0)
-		return 0;
+		return (0);
 	if ((*a_stack)->index > (*a_stack)->prev->index)
-		return swap(a_stack, A_FLAG);
-	return 0;
+		return (swap(a_stack, A_FLAG));
+	return (0);
 }
 
-int sort_three(t_stack **a_stack)
+int	sort_three(t_stack **a_stack)
 {
 	int		count;
 	int		n[3];
 
 	count = 0;
 	if (stack_size(*a_stack) < 3)
-		return sort_two(a_stack);
+		return (sort_two(a_stack));
 	n[0] = (*a_stack)->index;
 	n[1] = (*a_stack)->prev->index;
 	n[2] = (*a_stack)->prev->prev->index;
 	count = 0;
 	if (n[0] < n[1] && n[1] > n[2] && n[0] < n[2])
-		return swap(a_stack, A_FLAG) + rotate(a_stack, A_FLAG);
+		return (swap(a_stack, A_FLAG) + rotate(a_stack, A_FLAG));
 	if (n[0] > n[1] && n[1] < n[2] && n[0] < n[2])
-		return swap(a_stack, A_FLAG);
+		return (swap(a_stack, A_FLAG));
 	if (n[0] < n[1] && n[1] > n[2] && n[0] > n[2])
-		return reverse_rotate(a_stack, A_FLAG);
+		return (reverse_rotate(a_stack, A_FLAG));
 	if (n[0] > n[1] && n[1] > n[2] && n[0] > n[2])
-		return swap(a_stack, A_FLAG) + reverse_rotate(a_stack, A_FLAG);
+		return (swap(a_stack, A_FLAG) + reverse_rotate(a_stack, A_FLAG));
 	if (n[0] > n[1] && n[1] < n[2] && n[0] > n[2])
-		return rotate(a_stack, A_FLAG);
-	return count;
+		return (rotate(a_stack, A_FLAG));
+	return (count);
 }
 
 int	execute_move(t_stack **a_stack, t_stack **b_stack)
 {
 	t_moves	moves;
-	int		count;
 
-	count = 0;
 	find_cheaper(*a_stack, *b_stack, &moves);
 	while (moves.ra > 0 && moves.rb > 0)
 	{
-		count += rotate_both(a_stack, b_stack);
+		rotate_both(a_stack, b_stack);
 		moves.ra--;
 		moves.rb--;
 	}
 	while (moves.ra < 0 && moves.rb < 0)
 	{
-		count += reverse_rotate_both(a_stack, b_stack);
+		reverse_rotate_both(a_stack, b_stack);
 		moves.ra++;
 		moves.rb++;
 	}
 	while (moves.ra > 0 && moves.ra--)
-		count += rotate(a_stack, A_FLAG);
+		rotate(a_stack, A_FLAG);
 	while (moves.ra < 0 && moves.ra++)
-		count += reverse_rotate(a_stack, A_FLAG);
+		reverse_rotate(a_stack, A_FLAG);
 	while (moves.rb > 0 && moves.rb--)
-		count += rotate(b_stack, B_FLAG);
+		rotate(b_stack, B_FLAG);
 	while (moves.rb < 0 && moves.rb++)
-		count += reverse_rotate(b_stack, B_FLAG);
-	count += push_b(a_stack, b_stack);
-	return (count);
+		reverse_rotate(b_stack, B_FLAG);
+	push_b(a_stack, b_stack);
+	return (TRUE);
 }
 
 int	find_cheaper(t_stack *a_stack, t_stack *b_stack, t_moves *moves)
@@ -166,14 +165,15 @@ int	find_cheaper(t_stack *a_stack, t_stack *b_stack, t_moves *moves)
 		current = current->prev;
 	}
 	cost = calculate_moves(a_stack, b_stack, cheap_pos, moves);
-	return cheap_pos;
+	return (cheap_pos);
 }
 
-int	calculate_moves(t_stack *a_stack, t_stack *b_stack, int a_pos, t_moves *move)
+int	calculate_moves(t_stack *a_stack, t_stack *b_stack, int a_pos,
+		t_moves *move)
 {
 	int	target_pos;
-	int moves[4];
-	int comb[4];
+	int	moves[4];
+	int	comb[4];
 
 	target_pos = find_target(a_stack, b_stack, a_pos);
 	moves[0] = a_pos;
@@ -184,7 +184,7 @@ int	calculate_moves(t_stack *a_stack, t_stack *b_stack, int a_pos, t_moves *move
 	comb[1] = moves[0] + ft_abs(moves[3]);
 	comb[2] = ft_abs(moves[1]) + moves[2];
 	comb[3] = ft_max(ft_abs(moves[1]), ft_abs(moves[3]));
-	return find_min_moves(moves, comb, move);
+	return (find_min_moves(moves, comb, move));
 }
 
 int	find_min_moves(int *move, int *comb, t_moves *moves)
@@ -204,7 +204,7 @@ int	find_min_moves(int *move, int *comb, t_moves *moves)
 		}
 		i++;
 	}
-	return min;
+	return (min);
 }
 
 void	set_moves(int *move, t_moves *moves, int i)
@@ -236,7 +236,7 @@ int	find_min(t_stack *head)
 	int	min;
 
 	if (!head)
-		return 0;
+		return (0);
 	min = head->index;
 	while (head)
 	{
@@ -244,7 +244,7 @@ int	find_min(t_stack *head)
 			min = head->index;
 		head = head->prev;
 	}
-	return min;
+	return (min);
 }
 
 int	find_max(t_stack *head)
@@ -252,7 +252,7 @@ int	find_max(t_stack *head)
 	int	max;
 
 	if (!head)
-		return 0;
+		return (0);
 	max = head->index;
 	while (head)
 	{
@@ -260,7 +260,7 @@ int	find_max(t_stack *head)
 			max = head->index;
 		head = head->prev;
 	}
-	return max;
+	return (max);
 }
 
 int	find_max_pos(t_stack *head)
@@ -282,7 +282,7 @@ int	find_max_pos(t_stack *head)
 		i++;
 		head = head->prev;
 	}
-	return max_pos;
+	return (max_pos);
 }
 
 int	find_target(t_stack *a_stack, t_stack *b_stack, int a_pos)
@@ -294,9 +294,9 @@ int	find_target(t_stack *a_stack, t_stack *b_stack, int a_pos)
 	while (a_pos-- > 0)
 		a_stack = a_stack->prev;
 	if (!b_stack)
-		return 0;
+		return (0);
 	if (a_stack->index < find_min(b_stack))
-		return find_max_pos(b_stack);
+		return (find_max_pos(b_stack));
 	target = -1;
 	position = 0;
 	target_position = 0;
@@ -310,7 +310,7 @@ int	find_target(t_stack *a_stack, t_stack *b_stack, int a_pos)
 		position++;
 		b_stack = b_stack->prev;
 	}
-	return target_position;
+	return (target_position);
 }
 
 int	find_min_pos(t_stack *stack)
@@ -342,7 +342,7 @@ int	find_n_rotation(t_stack *a_stack, int value)
 	t_stack	*current;
 
 	if (value < find_min(a_stack) || value > find_max(a_stack))
-		return find_min_pos(a_stack);
+		return (find_min_pos(a_stack));
 	n = 0;
 	current = a_stack;
 	while (current->prev)
@@ -354,7 +354,7 @@ int	find_n_rotation(t_stack *a_stack, int value)
 		n++;
 	}
 	if (current->index < value && a_stack->index > value)
-		return 0;
+		return (0);
 	return (find_min_pos(a_stack));
 }
 
@@ -374,7 +374,7 @@ int	sort_back(t_stack **a_stack, t_stack **b_stack)
 		while (n++ < size)
 			count += reverse_rotate(a_stack, A_FLAG);
 	count += push_a(a_stack, b_stack);
-	return count;
+	return (count);
 }
 
 void	final_rotate(t_stack **a_stack)

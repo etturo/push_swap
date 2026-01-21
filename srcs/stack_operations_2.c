@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_operations_2.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eturini <eturini@student.42firenze.it>     +#+  +:+       +#+        */
+/*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 11:49:52 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/20 21:45:06 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/21 12:33:15 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	rotate(t_stack **head, int flag)
 	t_stack	*temp;
 
 	if (!*head || !(*head)->prev)
-		return 1;
+		return (1);
 	temp = (*head)->prev;
 	last = *head;
 	while (last->prev)
@@ -32,7 +32,7 @@ int	rotate(t_stack **head, int flag)
 		ft_printf("ra\n");
 	if (flag == B_FLAG)
 		ft_printf("rb\n");
-	return 1;
+	return (1);
 }
 
 int	rotate_both(t_stack **a_stack, t_stack **b_stack)
@@ -40,15 +40,15 @@ int	rotate_both(t_stack **a_stack, t_stack **b_stack)
 	rotate(a_stack, NULL_FLAG);
 	rotate(b_stack, NULL_FLAG);
 	ft_printf("rr\n");
-	return 1;
+	return (1);
 }
 
 int	reverse_rotate(t_stack **head, int flag)
 {
 	t_stack	*last;
-	
+
 	if (!*head || !(*head)->prev)
-		return 1;
+		return (1);
 	last = *head;
 	while (last->prev)
 		last = last->prev;
@@ -61,7 +61,7 @@ int	reverse_rotate(t_stack **head, int flag)
 		ft_printf("rra\n");
 	if (flag == B_FLAG)
 		ft_printf("rrb\n");
-	return 1;
+	return (1);
 }
 
 int	reverse_rotate_both(t_stack **a_stack, t_stack **b_stack)
@@ -69,6 +69,5 @@ int	reverse_rotate_both(t_stack **a_stack, t_stack **b_stack)
 	reverse_rotate(a_stack, NULL_FLAG);
 	reverse_rotate(b_stack, NULL_FLAG);
 	ft_printf("rrr\n");
-	return 1;
+	return (1);
 }
-

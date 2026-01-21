@@ -6,7 +6,7 @@
 /*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 22:23:28 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/20 14:30:21 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/21 12:24:44 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ long	ft_atoi(const char *s)
 {
 	int			sign;
 	int			i;
-	long	number;
+	long		number;
 
 	sign = 1;
 	i = 0;
@@ -35,12 +35,12 @@ long	ft_atoi(const char *s)
 		number = number * 10 + (s[i] - '0');
 		i++;
 		if (number > INT_MAX || number < INT_MIN)
-			return ERROR_FLAG;
+			return (ERROR_FLAG);
 	}
 	return ((long)(number * sign));
 }
 
-void free_stack(t_stack *stack)
+void	free_stack(t_stack *stack)
 {
 	t_stack	*current;
 	t_stack	*prev;
@@ -64,26 +64,43 @@ int	stack_size(t_stack *stack)
 		count++;
 		stack = stack->prev;
 	}
-	return count;
+	return (count);
 }
 
 int	ft_max(int a, int b)
 {
 	if (a > b)
-		return a;
-	return b;
+		return (a);
+	return (b);
 }
 
 int ft_abs(int a)
 {
 	if (a < 0)
-		return -a;
-	return a;
+		return (-a);
+	return (a);
 }
 
 int	ft_min(int a, int b)
 {
 	if (a < b)
-		return a;
-	return b;
+		return (a);
+	return (b);
+}
+
+int	skip_number(char *s)
+{
+	int	j;
+
+	j = 0;
+	while ((s[j] >= '0' && s[j] <= '9') || s[j] == '+' || s[j] == '-')
+		j++;
+	return (j);
+}
+
+int	is_number(char c)
+{
+	if ((c >= '0' && c <= '9') || c == '+' || c == '-')
+		return (TRUE);
+	return (FALSE);
 }

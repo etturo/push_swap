@@ -6,7 +6,7 @@
 /*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 22:19:07 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/21 11:29:47 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/21 12:17:39 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 # define B_FLAG 2
 # define BOTH_FLAG 3
 
-typedef struct	s_stack
+typedef struct s_stack
 {
 	int				value;
 	int				index;
@@ -37,7 +37,7 @@ typedef struct	s_stack
 	struct s_stack	*prev;
 }	t_stack;
 
-typedef struct	s_move
+typedef struct s_move
 {
 	int	ra;
 	int	rb;
@@ -64,6 +64,7 @@ int		rotate(t_stack **head, int flag);
 int		rotate_both(t_stack **a_stack, t_stack **b_stack);
 int		reverse_rotate(t_stack **head, int flag);
 int		reverse_rotate_both(t_stack **a_stack, t_stack **b_stack);
+int		fill_a_stack(t_stack **current, long *arguments, int size);
 
 /* algorithm functions */
 void	index_sorting(t_stack **stack, long *arguments);
@@ -72,7 +73,8 @@ int		is_sorted(t_stack *stack);
 int		find_cheaper(t_stack *a_stack, t_stack *b_stack, t_moves *moves);
 int		find_target(t_stack *a_stack, t_stack *b_stack, int a_pos);
 int		execute_move(t_stack **a_stack, t_stack **b_stack);
-int		calculate_moves(t_stack *a_stack, t_stack *b_stack, int a_pos, t_moves *move);
+int		calculate_moves(t_stack *a_stack, t_stack *b_stack, int a_pos,
+			t_moves *move);
 int		find_min_moves(int *move, int *comb, t_moves *moves);
 void	set_moves(int *move, t_moves *moves, int i);
 int		sort_three(t_stack **a_stack);
@@ -88,6 +90,8 @@ int		is_sorted(t_stack *stack);
 int		stack_size(t_stack *stack);
 int		ft_max(int a, int b);
 int		ft_abs(int a);
+int		skip_number(char *s);
+int		is_number(char c);
 
 /* error handling functions */
 int		put_error(void);
