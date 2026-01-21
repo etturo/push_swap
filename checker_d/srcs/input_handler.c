@@ -6,7 +6,7 @@
 /*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 17:00:00 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/21 17:07:01 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/21 18:10:44 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	check_arg(char **argv)
 	while (argv[++i])
 	{
 		j = 0;
+		if (argv[i][0] == '\0')
+			return (FALSE);
 		while (argv[i][j])
 		{
 			while (argv[i][j] == ' ')
@@ -31,8 +33,6 @@ int	check_arg(char **argv)
 			if (argv[i][j] >= '0' && argv[i][j] <= '9')
 				while (argv[i][j] >= '0' && argv[i][j] <= '9')
 					j++;
-			else if (argv[i][j] != '\0' && argv[i][j] != ' ')
-				return (FALSE);
 			if (argv[i][j] != '\0' && argv[i][j] != ' ')
 				return (FALSE);
 		}
@@ -127,6 +127,8 @@ int	check_input_validity(int argc, char **argv, long **arguments)
 	if (check_arg(argv) == FALSE)
 		return (FALSE);
 	count_arg = count_arguments(argv);
+	if (count_arg == 0)
+		return (FALSE);
 	*arguments = (long *)malloc((sizeof(long) * (count_arg + 1)));
 	if (!*arguments)
 		return (FALSE);

@@ -6,7 +6,7 @@
 /*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 15:47:14 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/21 17:14:54 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/21 18:06:12 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,19 +57,23 @@ int	is_sorted(t_stack *stack)
 void	checker(t_stack **a_stack, t_stack **b_stack)
 {
 	char	buf[1];
-	char	op[3];
+	char	op[4];
 	int		i;
 
 	while (read(0, buf, 1) > 0)
 	{
 		i = 0;
+		if (buf[0] == '\n')
+			continue;;
 		op[0] = buf[0];
-		while (op[i] != '\n')
+		while (op[0] != '\n' && i < 3)
 		{
-			read(0, buf, 1);
 			i++;
+			if (read(0, buf, 1) <= 0)
+				break;
 			op[i] = buf[0];
 		}
+		op[i] = '\0';
 		execute_check(op, a_stack, b_stack);
 	}
 	if (is_sorted(*a_stack) == TRUE)
