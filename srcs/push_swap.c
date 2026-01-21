@@ -6,7 +6,7 @@
 /*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 21:45:23 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/21 11:29:40 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/21 11:49:58 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,10 @@
 
 void	push_swap(t_stack **a_stack, t_stack **b_stack)
 {
-	if (stack_size(*a_stack) == 3)
+	if (stack_size(*a_stack) <= 3)
 		sort_three(a_stack);
-	if (is_sorted(*a_stack) == TRUE)
+	if (is_sorted(*a_stack) == TRUE || stack_size(*a_stack) == 1)
 		return ;
-	push_b(a_stack, b_stack);
-	push_b(a_stack, b_stack);
 	while (stack_size(*a_stack) > 3)
 		execute_move(a_stack, b_stack);
 	sort_three(a_stack);

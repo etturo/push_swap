@@ -6,7 +6,7 @@
 /*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 13:02:51 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/21 11:33:34 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/21 11:54:01 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ void	index_sorting(t_stack **stack, long *arguments)
 	size = stack_size(*stack);
 	arguments = bubble_sort(arguments, size);
 	current = *stack;
+	if (size <= 1)
+		return ;
 	while (current)
 	{
 		i = 0;
@@ -75,6 +77,14 @@ void	index_sorting(t_stack **stack, long *arguments)
 		current = current->prev;
 	}
 }
+int	sort_two(t_stack **a_stack)
+{
+	if (stack_size(*a_stack) == 1 || stack_size(*a_stack) == 0)
+		return 0;
+	if ((*a_stack)->index > (*a_stack)->prev->index)
+		return swap(a_stack, A_FLAG);
+	return 0;
+}
 
 int sort_three(t_stack **a_stack)
 {
@@ -82,6 +92,8 @@ int sort_three(t_stack **a_stack)
 	int		n[3];
 
 	count = 0;
+	if (stack_size(*a_stack) < 3)
+		return sort_two(a_stack);
 	n[0] = (*a_stack)->index;
 	n[1] = (*a_stack)->prev->index;
 	n[2] = (*a_stack)->prev->prev->index;
