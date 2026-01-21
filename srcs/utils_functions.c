@@ -6,7 +6,7 @@
 /*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 22:23:28 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/21 12:24:44 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/21 14:26:57 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,27 +65,6 @@ int	stack_size(t_stack *stack)
 		stack = stack->prev;
 	}
 	return (count);
-}
-
-int	ft_max(int a, int b)
-{
-	if (a > b)
-		return (a);
-	return (b);
-}
-
-int ft_abs(int a)
-{
-	if (a < 0)
-		return (-a);
-	return (a);
-}
-
-int	ft_min(int a, int b)
-{
-	if (a < b)
-		return (a);
-	return (b);
 }
 
 int	skip_number(char *s)

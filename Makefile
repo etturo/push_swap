@@ -1,11 +1,12 @@
-NAME = push_swap.out
+NAME = push_swap
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror
 INCLUDES = -I./includes -I./ft_printf
 
 SRCS = srcs/push_swap.c srcs/error_handler.c srcs/input_handler.c \
        srcs/stack_operations.c srcs/utils_functions.c srcs/stack_operations_2.c \
-	   srcs/algorithm.c
+	   srcs/algorithm.c srcs/calculation.c srcs/calculation2.c \
+	   srcs/math_functions.c srcs/sort_functions.c
 OBJS = $(SRCS:.c=.o)
 PRINTF_LIB = ft_printf/libftprintf.a
 

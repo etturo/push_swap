@@ -6,7 +6,7 @@
 /*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 11:49:52 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/21 12:33:15 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/21 14:27:06 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,13 @@ int	reverse_rotate_both(t_stack **a_stack, t_stack **b_stack)
 	reverse_rotate(a_stack, NULL_FLAG);
 	reverse_rotate(b_stack, NULL_FLAG);
 	ft_printf("rrr\n");
+	return (1);
+}
+
+int	swap_both(t_stack **a_stack, t_stack **b_stack)
+{
+	swap(a_stack, NULL_FLAG);
+	swap(b_stack, NULL_FLAG);
+	ft_printf("ss\n");
 	return (1);
 }

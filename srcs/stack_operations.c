@@ -6,7 +6,7 @@
 /*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 22:21:37 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/21 12:23:21 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/21 14:25:37 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,14 +77,6 @@ int	swap(t_stack **head, int stack_flag)
 		ft_printf("sa\n");
 	if (stack_flag == B_FLAG)
 		ft_printf("sb\n");
-	return (1);
-}
-
-int	swap_both(t_stack **a_stack, t_stack **b_stack)
-{
-	swap(a_stack, NULL_FLAG);
-	swap(b_stack, NULL_FLAG);
-	ft_printf("ss\n");
 	return (1);
 }
 
