@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algorithm.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eturini <eturini@student.42firenze.it>     +#+  +:+       +#+        */
+/*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 13:02:51 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/20 21:43:17 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/21 11:33:34 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,7 +141,7 @@ int	find_cheaper(t_stack *a_stack, t_stack *b_stack, t_moves *moves)
 	current = a_stack;
 	cheap_pos = 0;
 	position = 0;
-	cheap_cost = 1000000;
+	cheap_cost = INT_MAX;
 	while (current)
 	{
 		cost = calculate_moves(a_stack, b_stack, position, moves);
@@ -169,7 +169,7 @@ int	calculate_moves(t_stack *a_stack, t_stack *b_stack, int a_pos, t_moves *move
 	moves[2] = target_pos;
 	moves[3] = target_pos - stack_size(b_stack);
 	comb[0] = ft_max(moves[0], moves[2]);
-	comb[1] = moves[0] + ft_abs(moves[2]);
+	comb[1] = moves[0] + ft_abs(moves[3]);
 	comb[2] = ft_abs(moves[1]) + moves[2];
 	comb[3] = ft_max(ft_abs(moves[1]), ft_abs(moves[3]));
 	return find_min_moves(moves, comb, move);
@@ -363,4 +363,23 @@ int	sort_back(t_stack **a_stack, t_stack **b_stack)
 			count += reverse_rotate(a_stack, A_FLAG);
 	count += push_a(a_stack, b_stack);
 	return count;
+}
+
+void	final_rotate(t_stack **a_stack)
+{
+	int	min_pos;
+	int	size;
+
+	min_pos = find_min_pos(*a_stack);
+	size = stack_size(*a_stack);
+	if (min_pos <= size / 2)
+	{
+		while (min_pos-- > 0)
+			rotate(a_stack, A_FLAG);
+	}
+	else
+	{
+		while (min_pos++ < size)
+			reverse_rotate(a_stack, A_FLAG);
+	}
 }

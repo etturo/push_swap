@@ -3,33 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eturini <eturini@student.42firenze.it>     +#+  +:+       +#+        */
+/*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 21:45:23 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/20 21:47:32 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/21 11:29:40 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-static void	final_rotate(t_stack **a_stack)
-{
-	int	min_pos;
-	int	size;
-
-	min_pos = find_min_pos(*a_stack);
-	size = stack_size(*a_stack);
-	if (min_pos <= size / 2)
-	{
-		while (min_pos-- > 0)
-			rotate(a_stack, A_FLAG);
-	}
-	else
-	{
-		while (min_pos++ < size)
-			reverse_rotate(a_stack, A_FLAG);
-	}
-}
 
 void	push_swap(t_stack **a_stack, t_stack **b_stack)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eturini <eturini@student.42firenze.it>     +#+  +:+       +#+        */
+/*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 22:19:07 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/20 21:14:19 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/21 11:29:47 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ int		sort_three(t_stack **a_stack);
 int		sort_back(t_stack **a_stack, t_stack **b_stack);
 int		find_max(t_stack *head);
 int		find_min_pos(t_stack *stack);
+void	final_rotate(t_stack **a_stack);
 
 /* utils functions */;
 long	ft_atoi(const char *s);
