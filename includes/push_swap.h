@@ -6,7 +6,7 @@
 /*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 22:19:07 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/21 14:37:28 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/21 17:10:09 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@
 # define NULL_FLAG 0
 # define A_FLAG 1
 # define B_FLAG 2
-# define BOTH_FLAG 3
 
 typedef struct s_stack
 {
