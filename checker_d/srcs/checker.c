@@ -6,13 +6,13 @@
 /*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 15:47:14 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/21 18:06:12 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/22 14:32:07 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/checker.h"
 
-void execute_check(char *op, t_stack **a_stack, t_stack **b_stack)
+void	execute_check(char *op, t_stack **a_stack, t_stack **b_stack)
 {
 	if (ft_strncmp(op, "sa", 3) == TRUE)
 		swap(a_stack);
@@ -64,13 +64,13 @@ void	checker(t_stack **a_stack, t_stack **b_stack)
 	{
 		i = 0;
 		if (buf[0] == '\n')
-			continue;;
+			continue ;
 		op[0] = buf[0];
 		while (op[0] != '\n' && i < 3)
 		{
 			i++;
 			if (read(0, buf, 1) <= 0)
-				break;
+				break ;
 			op[i] = buf[0];
 		}
 		op[i] = '\0';
