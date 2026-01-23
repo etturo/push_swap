@@ -3,39 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eturini <eturini@student.42firenze.it>     +#+  +:+       +#+        */
+/*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 15:47:14 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/23 11:34:07 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/23 16:38:00 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/checker.h"
 
-void	execute_check(char *op, t_stack **a_stack, t_stack **b_stack)
+int	execute_check(char *op, t_stack **a_stack, t_stack **b_stack)
 {
 	if (ft_strncmp(op, "sa", 3) == TRUE)
-		swap(a_stack);
+		return (swap(a_stack));
 	else if (ft_strncmp(op, "sb", 3) == TRUE)
-		swap(b_stack);
+		return (swap(b_stack));
 	else if (ft_strncmp(op, "ss", 3) == TRUE)
-		swap_both(a_stack, b_stack);
+		return (swap_both(a_stack, b_stack));
 	else if (ft_strncmp(op, "pa", 3) == TRUE)
-		push_a(a_stack, b_stack);
+		return (push_a(a_stack, b_stack));
 	else if (ft_strncmp(op, "pb", 3) == TRUE)
-		push_b(a_stack, b_stack);
+		return (push_b(a_stack, b_stack));
 	else if (ft_strncmp(op, "ra", 3) == TRUE)
-		rotate(a_stack);
+		return (rotate(a_stack));
 	else if (ft_strncmp(op, "rb", 3) == TRUE)
-		rotate(b_stack);
+		return (rotate(b_stack));
 	else if (ft_strncmp(op, "rr", 3) == TRUE)
-		rotate_both(a_stack, b_stack);
+		return (rotate_both(a_stack, b_stack));
 	else if (ft_strncmp(op, "rra", 3) == TRUE)
-		reverse_rotate(a_stack);
+		return (reverse_rotate(a_stack));
 	else if (ft_strncmp(op, "rrb", 3) == TRUE)
-		reverse_rotate(b_stack);
+		return (reverse_rotate(b_stack));
 	else if (ft_strncmp(op, "rrr", 3) == TRUE)
-		reverse_rotate_both(a_stack, b_stack);
+		return (reverse_rotate_both(a_stack, b_stack));
+	return (FALSE);
 }
 
 int	is_sorted(t_stack *stack)
@@ -54,7 +55,7 @@ int	is_sorted(t_stack *stack)
 	return (TRUE);
 }
 
-void	checker(t_stack **a_stack, t_stack **b_stack)
+int	checker(t_stack **a_stack, t_stack **b_stack)
 {
 	char	buf;
 	char	op[5];
@@ -66,20 +67,18 @@ void	checker(t_stack **a_stack, t_stack **b_stack)
 		if (buf == '\n')
 		{
 			op[i] = '\0';
-			if (i > 0)
-				execute_check(op, a_stack, b_stack);
+			if (i > 0 && execute_check(op, a_stack, b_stack) == FALSE)
+				return (put_error());
 			i = 0;
 		}
 		else if (i < 4)
-		{
-			op[i] = buf;
-			i++;
-		}
+			op[i++] = buf;
 	}
 	if (is_sorted(*a_stack) == TRUE && stack_size(*b_stack) == 0)
 		ft_printf("OK\n");
 	else
 		ft_printf("KO\n");
+	return (0);
 }
 
 int	main(int argc, char **argv)

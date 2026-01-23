@@ -6,7 +6,7 @@
 /*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 16:13:10 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/21 17:14:16 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/23 16:35:30 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ typedef struct s_stack
 }	t_stack;
 
 /* checker functions */
-void	execute_check(char *op, t_stack **a_stack, t_stack **b_stack);
+int		execute_check(char *op, t_stack **a_stack, t_stack **b_stack);
 int		is_sorted(t_stack *stack);
-void	checker(t_stack **a_stack, t_stack **b_stack);
+int		checker(t_stack **a_stack, t_stack **b_stack);
 
 /* input handler functions*/
 int		check_arg(char **argv);
