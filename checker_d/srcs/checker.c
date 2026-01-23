@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eturini <eturini@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 15:47:14 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/22 14:32:07 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/23 11:34:07 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	is_sorted(t_stack *stack)
 	current = stack;
 	while (current->prev)
 	{
-		if (current->index > current->prev->index)
+		if (current->value > current->prev->value)
 			return (FALSE);
 		current = current->prev;
 	}
@@ -56,27 +56,27 @@ int	is_sorted(t_stack *stack)
 
 void	checker(t_stack **a_stack, t_stack **b_stack)
 {
-	char	buf[1];
-	char	op[4];
+	char	buf;
+	char	op[5];
 	int		i;
 
-	while (read(0, buf, 1) > 0)
+	i = 0;
+	while (read(0, &buf, 1) > 0)
 	{
-		i = 0;
-		if (buf[0] == '\n')
-			continue ;
-		op[0] = buf[0];
-		while (op[0] != '\n' && i < 3)
+		if (buf == '\n')
 		{
-			i++;
-			if (read(0, buf, 1) <= 0)
-				break ;
-			op[i] = buf[0];
+			op[i] = '\0';
+			if (i > 0)
+				execute_check(op, a_stack, b_stack);
+			i = 0;
 		}
-		op[i] = '\0';
-		execute_check(op, a_stack, b_stack);
+		else if (i < 4)
+		{
+			op[i] = buf;
+			i++;
+		}
 	}
-	if (is_sorted(*a_stack) == TRUE)
+	if (is_sorted(*a_stack) == TRUE && stack_size(*b_stack) == 0)
 		ft_printf("OK\n");
 	else
 		ft_printf("KO\n");

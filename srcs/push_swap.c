@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eturini <eturini@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 21:45:23 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/21 11:49:58 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/23 11:31:42 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int	main(int argc, char **argv)
 
 	a_stack = NULL;
 	b_stack = NULL;
+	if (argc == 1)
+		return (0);
 	if (check_input_validity(argc, argv, &arguments) == FALSE)
 		return (put_error());
 	if (!setup_a(&a_stack, arguments, count_arguments(argv)))

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_operations.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eturini <eturini@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 22:21:37 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/21 16:20:58 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/23 11:27:10 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	setup_a(t_stack **a_stack, long *arguments, int size)
 	current = (t_stack *)malloc(sizeof(t_stack));
 	if (!current)
 		return (FALSE);
-	current->value = (int)*arguments;
+	current->value = (int)arguments[0];
 	current->prev = NULL;
 	current->next = NULL;
 	head = current;
@@ -38,8 +38,8 @@ int	fill_a_stack(t_stack **current, long *arguments, int size)
 	t_stack	*new_node;
 	int		i;
 
-	i = 0;
-	while (++i < size)
+	i = 1;
+	while (i < size)
 	{
 		new_node = (t_stack *)malloc(sizeof(t_stack));
 		if (!new_node)
@@ -50,29 +50,29 @@ int	fill_a_stack(t_stack **current, long *arguments, int size)
 		(*current)->prev = new_node;
 		(*current) = new_node;
 		arguments++;
+		i++;
 	}
 	return (TRUE);
 }
 
 int	swap(t_stack **head)
 {
-	t_stack	*temp;
+	t_stack	*first;
+	t_stack	*second;
+	t_stack	*third;
 
-	if (!*head || !(*head)->prev)
-		return (1);
-	temp = *head;
-	*head = (*head)->prev;
-	temp->next = *head;
-	if ((*head)->prev)
-	{
-		((*head)->prev)->next = temp;
-		temp->prev = (*head)->prev;
-	}
-	else
-		temp->prev = NULL;
-	(*head)->prev = temp;
-	temp->next = *head;
-	(*head)->next = NULL;
+	if (!head || !*head || !(*head)->prev)
+		return (0);
+	first = *head;
+	second = first->prev;
+	third = second->prev;
+	*head = second;
+	second->next = NULL;
+	second->prev = first;
+	first->next = second;
+	first->prev = third;
+	if (third)
+		third->next = first;
 	return (1);
 }
 

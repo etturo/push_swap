@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_operations.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eturini <eturini@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 22:21:37 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/21 14:25:37 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/23 11:27:15 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,23 +56,22 @@ int	fill_a_stack(t_stack **current, long *arguments, int size)
 
 int	swap(t_stack **head, int stack_flag)
 {
-	t_stack	*temp;
+	t_stack	*first;
+	t_stack	*second;
+	t_stack	*third;
 
-	if (!*head || !(*head)->prev)
-		return (1);
-	temp = *head;
-	*head = (*head)->prev;
-	temp->next = *head;
-	if ((*head)->prev)
-	{
-		((*head)->prev)->next = temp;
-		temp->prev = (*head)->prev;
-	}
-	else
-		temp->prev = NULL;
-	(*head)->prev = temp;
-	temp->next = *head;
-	(*head)->next = NULL;
+	if (!head || !*head || !(*head)->prev)
+		return (0);
+	first = *head;
+	second = first->prev;
+	third = second->prev;
+	*head = second;
+	second->next = NULL;
+	second->prev = first;
+	first->next = second;
+	first->prev = third;
+	if (third)
+		third->next = first;
 	if (stack_flag == A_FLAG)
 		ft_printf("sa\n");
 	if (stack_flag == B_FLAG)

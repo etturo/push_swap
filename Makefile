@@ -44,7 +44,7 @@ fclean: clean
 
 re: fclean all
 
-RANGE ?= 0-500
+RANGE ?= 1-500
 COUNT ?= 500
 RANDOM_NUMS = $$(echo "$(RANGE)" | awk -F'-' '{ \
 	if (NF == 2) { lo=$$1; hi=$$2 } \

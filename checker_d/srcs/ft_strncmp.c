@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eturini <eturini@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 15:24:34 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/21 17:09:40 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/23 11:14:12 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	while ((ss1[i] != '\0' || ss2[i] != '\0') && i < n)
 	{
 		if (ss1[i] != ss2[i])
-			return (ss1[i] - ss2[i]);
+			return (FALSE);
 		i++;
 	}
-	return (0);
+	return (TRUE);
 }
