@@ -6,7 +6,7 @@
 /*   By: eturini <eturini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 22:23:28 by eturini           #+#    #+#             */
-/*   Updated: 2026/01/21 14:26:57 by eturini          ###   ########.fr       */
+/*   Updated: 2026/01/25 14:51:11 by eturini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ long	ft_atoi(const char *s)
 	{
 		number = number * 10 + (s[i] - '0');
 		i++;
-		if (number > INT_MAX || number < INT_MIN)
+		if ((sign * number) > INT_MAX || (sign * number) < INT_MIN)
 			return (ERROR_FLAG);
 	}
 	return ((long)(number * sign));
